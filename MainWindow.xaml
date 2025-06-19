@@ -1,0 +1,16 @@
+﻿<Window x:Class="AGSS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AGSS"
+        mc:Ignorable="d"
+        Title="Вход" Height="450" Width="800" Background="Gray">
+    <Grid>
+        <TextBox x:Name="LoginBox" HorizontalAlignment="Center" Margin="0,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Height="30" FontSize="16"/>
+        <PasswordBox x:Name="PasBox" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Width="218" Height="30" FontSize="16"/>
+        <Button x:Name="LogInBTN" Content="Войти" Margin="644,363,0,0" Click="LogInBTN_Click" FontSize="18" HorizontalAlignment="Left" Width="123" Height="38" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LoginCombo" HorizontalAlignment="Center" Margin="0,82,0,0" VerticalAlignment="Top" Width="218" FontSize="16" Height="30"/>
+
+    </Grid>
+</Window>

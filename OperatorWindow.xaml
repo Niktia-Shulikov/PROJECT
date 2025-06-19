@@ -1,0 +1,168 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AGSS"
+        xmlns:oxy="http://oxyplot.org/wpf" x:Class="AGSS.OperatorWindow"
+        mc:Ignorable="d"
+        Title="Оператор" Height="798" Width="1595" Background="Gray">
+    <Grid>
+        <TreeView x:Name="DataTree" Margin="0,31,0,0" HorizontalAlignment="Left" Width="195" SelectedItemChanged="DataTree_SelectedItemChanged" FontSize="22" Height="263" VerticalAlignment="Top">
+            <TreeViewItem Header="Площадь">
+                <TreeViewItem Header="Профиль">
+                    <TreeViewItem Header="Канал"/>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="Полет">
+                <TreeViewItem Header="Спектрометр">
+                    <TreeViewItem Header="Метаданные"/>
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+        <ComboBox x:Name="ProjectCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" SelectionChanged="ProjectCombo_SelectionChanged" Height="31"/>
+        <ListView x:Name="ProjectView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="194,31,0,0" HorizontalAlignment="Left" Width="796" Height="62" VerticalAlignment="Top" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№" DisplayMemberBinding="{Binding ProjectId}"/>
+                    <GridViewColumn Header="Название">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Заметки">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="№ заказчика">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding CustomerId, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="№ ведущего спец.">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding LeadSpecialistId, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="№ Гл. инженера">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding ChiefEnginnerId, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="SpecialistView" Margin="194,124,0,0" HorizontalAlignment="Left" Width="398" Height="170" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№" DisplayMemberBinding="{Binding LeadSpecialistId}"/>
+                    <GridViewColumn Header="Полное имя">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Номер телефона">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Адрес">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Информация о проекте" HorizontalAlignment="Left" Margin="195,0,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Width="795" HorizontalContentAlignment="Center"/>
+        <Label Content="Информация о ведущих специалистах" HorizontalAlignment="Left" Margin="195,93,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Width="398" HorizontalContentAlignment="Center"/>
+        <Label Content="Информация об операторе" HorizontalAlignment="Left" Margin="591,93,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Width="398" HorizontalContentAlignment="Center"/>
+        <ListView x:Name="OperatorView" Margin="591,124,0,0" HorizontalAlignment="Left" Width="398" Height="170" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№" DisplayMemberBinding="{Binding OperatorId}"/>
+                    <GridViewColumn Header="Полное имя">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Номер телефона">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Адрес">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Данные проекта" HorizontalAlignment="Left" Margin="0,294,0,0" VerticalAlignment="Top" Width="985" FontWeight="Bold" FontSize="16" HorizontalContentAlignment="Center"/>
+        <ListView x:Name="Data" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,325,0,0" HorizontalAlignment="Left" Width="693" Height="426" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <oxy:PlotView x:Name="DataPlot" Margin="991,377,0,0" VerticalAlignment="Top" Height="372" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="570">
+            <oxy:PlotView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-180.122"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </oxy:PlotView.RenderTransform>
+        </oxy:PlotView>
+        <ListView x:Name="CoordinateView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="693,325,0,0" HorizontalAlignment="Left" Width="294" Height="426" VerticalAlignment="Top" Visibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Margin="990,31,0,0" Height="345" VerticalAlignment="Top" Background="White" HorizontalAlignment="Left" Width="570">
+            <ComboBox x:Name="AddCombo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="201" SelectionChanged="AddCombo_SelectionChanged"/>
+            <Label x:Name="oneLabel" Content="" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="twoLabel" Content="" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="threeLabel" Content="" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="fourLabel" Content="" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="fiveLabel" Content="" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="oneBox" HorizontalAlignment="Left" Margin="200,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Visibility="Hidden"/>
+            <TextBox x:Name="twoBox" HorizontalAlignment="Left" Margin="200,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Visibility="Hidden"/>
+            <TextBox x:Name="threeBox" HorizontalAlignment="Left" Margin="200,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Visibility="Hidden"/>
+            <TextBox x:Name="fourBox" HorizontalAlignment="Left" Margin="200,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Visibility="Hidden"/>
+            <TextBox x:Name="fiveBox" HorizontalAlignment="Left" Margin="200,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Visibility="Hidden"/>
+            <Button x:Name="AddBTN" Content="Добавить" HorizontalAlignment="Left" Margin="410,283,0,0" VerticalAlignment="Top" Height="45" Width="123" FontSize="16" Click="AddBTN_Click"/>
+            <Button x:Name="DeleteBTN" Content="Удалить" HorizontalAlignment="Left" Margin="17,283,0,0" VerticalAlignment="Top" Height="45" Width="123" FontSize="16" Click="DeleteBTN_Click"/>
+            <Button x:Name="ExitBTN" Content="Выход" HorizontalAlignment="Left" Margin="471,10,0,0" VerticalAlignment="Top" Height="33" Width="89" FontSize="14" Click="ExitBTN_Click"/>
+        </Grid>
+        <Label Content="Добавление и удаление данных" Margin="990,0,0,0" VerticalAlignment="Top" Height="31" HorizontalAlignment="Left" Width="570" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Window>
